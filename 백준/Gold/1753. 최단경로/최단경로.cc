@@ -8,7 +8,7 @@ using namespace std;
 int INF = 2147000000;
 
 // 간선 정보를 저장하는 벡터
-vector<pair<int, int>> a[300001];
+vector<pair<int, int>> a[20001];
 
 // 최단 거리를 저장하는 벡터
 vector<int> d(20001);
