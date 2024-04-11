@@ -69,7 +69,7 @@ int main() {
         room[b].push_back({a,c});
     }
     dfs(1);
-    parent[0][1] = {1,0};
+    parent[1][0] = {1,0};
     for (int i = 1; i <= 16; i++) {
         for (int j = 1; j <= n; j++) {
             parent[j][i] = {parent[parent[j][i-1].first][i-1].first, parent[j][i-1].second + parent[parent[j][i-1].first][i-1].second};
@@ -83,9 +83,6 @@ int main() {
             }
             energy[i] -= parent[x][j].second;
             x = parent[x][j].first;
-        }
-        if (x == 0){
-            x = 1;
         }
         cout << x << "\n";
     }
