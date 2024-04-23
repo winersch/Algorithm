@@ -29,9 +29,9 @@ int main() {
         cin >> a;
         ll mx = 0;
         for (int j = 0; j < a; j++) {
-            int x, y;
+            ll x, y;
             cin >> x >> y;
-            mx = max(mx, (ll)(x*x + y*y));
+            mx = max(mx, (x*x + y*y));
         }
         v.push_back(mx);
     }
