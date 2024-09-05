@@ -1,16 +1,23 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
-#include <queue>
 #include <cstring>
-#include <stack>
-#include <map>
-#include <numeric>
+#include <queue>
 #include <cmath>
+#include <iomanip>
+#include <map>
+#include <stack>
+#include <numeric>
 
+
+#define inf 0x3f3f3f3f
+#define ll long long
+#define pii pair<int,int>
+#define pdd pair<double,double>
+#define pll pair<long long, long long>
+#define vi vector<int>
 
 using namespace std;
-
 
 int v, e, ans;
 vector<pair<int,pair<int,int>>> vertex;
@@ -20,7 +27,7 @@ int findParent(int a){
     if (parent[a] == 0){
         return a;
     }else{
-        return findParent(parent[a]);
+        return parent[a] = findParent(parent[a]);
     }
 }
 
