@@ -27,17 +27,19 @@ int main() {
     ios::sync_with_stdio(false);
 
     cin >> n >> l;
-    priority_queue<pii,vector<pii>, greater<pii>> pq;
+    deque<pii> dq;
 
     for (int i = 1; i <= n; i++) {
         int a;
         cin >> a;
-        pq.push({a,i});
-        int m = inf;
-        while(pq.top().second < i-l+1){
-            pq.pop();
+        while(!dq.empty() && dq.back().first > a){
+            dq.pop_back();
         }
-        cout << pq.top().first << " ";
+        dq.push_back({a,i});
+        while(dq.front().second < i-l+1){
+            dq.pop_front();
+        }
+        cout << dq.front().first << " ";
     }
 
 
