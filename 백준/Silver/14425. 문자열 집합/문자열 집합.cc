@@ -22,45 +22,7 @@
 using namespace std;
 
 int n, m;
-
-struct Trie{
-    bool finish;
-    Trie* next[26];
-    Trie() : finish(false){
-        memset(next, 0, sizeof(next));
-    }
-    ~Trie(){
-        for (int i = 0; i < 26; i++) {
-            if (next[i]){
-                delete next[i];
-            }
-        }
-    }
-
-    void insert(string &s, int idx){
-        if (s.length() == idx){
-            finish = true;
-        }else{
-            int curr = s[idx] - 'a';
-            if (next[curr] == NULL){
-                next[curr] = new Trie();
-            }
-            next[curr]->insert(s, idx+1);
-        }
-    }
-
-    bool find(string &s, int idx){
-        if (s.length() == idx){
-            return finish;
-        }
-        int curr = s[idx] - 'a';
-        if (next[curr] == NULL){
-            return false;
-        }
-        return next[curr]->find(s, idx+1);
-    }
-
-}trie;
+map<string,bool> strMap;
 
 int main() {
     cin.tie(NULL);
@@ -71,13 +33,13 @@ int main() {
     for (int i = 0; i < n; i++) {
         string s;
         cin >> s;
-        trie.insert(s,0);
+        strMap[s] = true;
     }
     int ans = 0;
     for (int i = 0; i < m; i++) {
         string s;
         cin >> s;
-        if(trie.find(s,0)){
+        if (strMap[s]){
             ans++;
         }
     }
