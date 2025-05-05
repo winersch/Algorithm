@@ -36,9 +36,6 @@ int main() {
                 dp[i][j] = 1;
                 continue;
             }
-            if (i < pow(2, j-1)){
-                break;
-            }
             for (int k = 0; k < i/2 +1; k++) {
                 dp[i][j] += dp[k][j-1];
             }
