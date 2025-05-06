@@ -42,28 +42,33 @@ int main() {
     for (int k = 1; k <= n; k++) {
         for (int i = 1; i <= n; i++) {
             for (int j = 1; j <= n; j++) {
-                dist[i][j] = min(dist[i][k], dist[k][j]);
+                dist[i][j] = min(dist[i][k] + dist[k][j], dist[i][j]);
             }
         }
     }
-    for (int i = 1; i <= n; i++) {
-        dist[i][i] = 0;
-    }
-    int a1, a2, ans = inf;
+
+    int ans = inf;
+    vector<pii> v;
     for (int i = 1; i <= n; i++) {
         for (int j = i+1; j <= n; j++) {
             int d = 0;
             for (int k = 1; k <= n; k++) {
+                if (k == i || k == j){
+                    continue;
+                }
                 d += min(dist[i][k], dist[j][k]) * 2;
             }
             if (d < ans){
-                a1 = i;
-                a2 = j;
+                v.clear();
+                v.push_back({i,j});
                 ans = d;
+            }else if (d == ans){
+                v.push_back({i,j});
             }
         }
     }
-    cout << a1 << " " << a2 << " " << ans;
+    std::sort(v.begin(), v.end());
+    cout << v[0].first << " " << v[0].second << " " << ans;
     return 0;
 }
 
