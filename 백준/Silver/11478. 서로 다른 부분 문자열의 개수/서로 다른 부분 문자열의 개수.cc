@@ -28,21 +28,17 @@ int main() {
     cout.tie(NULL);
     ios::sync_with_stdio(false);
 
-    map<string, bool> m;
-    int ans = 0;
+    set<string> m;
     string s;
     cin >> s;
     for (int i = 0; i < s.length(); i++) {
         for (int j = 1; j + i <= s.length(); j++) {
             string t = s.substr(i,j);
-            if (!m[t]){
-                m[t] = true;
-                ans++;
-            }
+            m.insert(t);
         }
     }
 
-    cout << ans;
+    cout << m.size();
 
 
     return 0;
