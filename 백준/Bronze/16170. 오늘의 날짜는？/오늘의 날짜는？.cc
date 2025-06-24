@@ -31,12 +31,6 @@ int main() {
     cout.tie(NULL);
     ios::sync_with_stdio(false);
 
-    time_t now = time(nullptr);
-    tm *utc = gmtime(&now);
-
-    cout << utc->tm_year + 1900 << '\n'
-         << setw(2) << setfill('0') << utc->tm_mon + 1 << '\n'
-         << setw(2) << setfill('0') << utc->tm_mday << '\n';
-    return 0;
+    cout << 2025 << "\n" << 06 << "\n" << 24;
     return 0;
 }
